@@ -2,6 +2,16 @@
   "name": "bbc-id-finder",
   "version": "1.0.0",
   "description": "looks for bbc ids in path and document",
-  "main": "index.js",
-  "license": "MIT"
+  "main": "lib/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d lib",
+    "test": "ENV=dev jest --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "jest": "^26.1.0"
+  }
 }
