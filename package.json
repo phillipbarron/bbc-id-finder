@@ -1,0 +1,7 @@
+{
+  "name": "bbc-id-finder",
+  "version": "1.0.0",
+  "description": "looks for bbc ids in path and document",
+  "main": "index.js",
+  "license": "MIT"
+}
