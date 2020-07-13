@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "no-underscore-dangle": "off",
+    "global-require": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "jsx-a11y/label-has-for": [ 2, {
+      "components": [ "Label" ],
+      "required": {
+        "every": [ "nesting", "id" ]
+      },
+      "allowChildren": true
+    }]
+  }
+}
