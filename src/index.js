@@ -4,7 +4,7 @@ const PID = 'PID';
 const ISITE_ID = 'ISITE_ID';
 const CPS_ID = 'CPS_ID';
 
-exports.getId = async (host, path, html, bbcpage) => {
+exports.getId = async (path, html, bbcpage) => {
   const pidRegex = '[bcdlnmprtw][0-9|b-d|f-h|j-n|p-t|v-z]{7,14}';
   const shortIdRegex = /([a-z])[\w]{10,}([a-z])/;
   const guidRegex = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
