@@ -8,6 +8,7 @@ exports.getId = async (path, html, bbcpage) => {
   const pidRegex = '[bcdlnmprtw][0-9|b-d|f-h|j-n|p-t|v-z]{7,14}';
   const shortIdRegex = /([a-z])[\w]{10,}([a-z])/;
   const guidRegex = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
+  const cpsLocatorRegex = new RegExp(`^urn:bbc:cps:(${guidRegex})`);
 
   const pidPathMatches = path.match(new RegExp(pidRegex));
   const shortIdPathMatches = path.match(shortIdRegex);
@@ -63,10 +64,8 @@ exports.getId = async (path, html, bbcpage) => {
     if (typeof bbcpage !== 'undefined') {
       try {
         const contentId = await bbcpage.getContentId();
-        if (contentId.indexOf(':') !== -1) {
-          const cpsLocatorMatches = contentId.match(
-            new RegExp(`^urn:bbc:cps:(${guidRegex})`),
-          );
+        if (contentId.indexOf(':') > -1) {
+          const cpsLocatorMatches = contentId.match(cpsLocatorRegex);
           if (cpsLocatorMatches) {
             resolve({
               type: CPS_ID,

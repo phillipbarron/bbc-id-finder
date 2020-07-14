@@ -39,7 +39,7 @@ describe('should identify type from input', () => {
       html: '<html>"clip_pid": "p01lllhj"</html>',
       value: 'p01lllhj',
       type: 'PID',
-      description: 'match pid in iPlayer path ignoring pid matching string in GUID',
+      description: 'match pid in castaway html ignoring pid matching string in path GUID',
       bbcpage: undefined,
     },
     {
