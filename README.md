@@ -39,3 +39,7 @@ yarn install
 ```bash
 yarn test
 ```
+
+## todo
+
+use the content of this function to build bookmarklet. Possibly through webpack or js templating
