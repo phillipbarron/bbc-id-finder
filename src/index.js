@@ -8,7 +8,7 @@ exports.getId = async (path, html, bbcpage) => {
   const pidRegex = '[bcdlnmprtw][0-9|b-d|f-h|j-n|p-t|v-z]{7,14}';
   const shortIdRegex = /([a-z])[\w]{10,}([a-z])/;
   const guidRegex = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}';
-  const cpsLocatorRegex = new RegExp(`^urn:bbc:cps:(${guidRegex})`);
+  const cpsLocatorRegex = new RegExp(`urn:bbc:cps:(${guidRegex})`);
 
   const pidPathMatches = path.match(new RegExp(pidRegex));
   const shortIdPathMatches = path.match(shortIdRegex);
@@ -16,11 +16,20 @@ exports.getId = async (path, html, bbcpage) => {
   const pidDocumentMatches = new RegExp(`clip_pid": ?"(${pidRegex})"`).exec(
     html,
   );
+  const cpsLocatorInCointentMatches = html && html.match(cpsLocatorRegex);
+  
   const iSiteGuidPathMatches = path.match(
     new RegExp(`isite2-xforms/fr/([^/]+)/.*(${guidRegex})`),
   );
 
   return new Promise(async (resolve, reject) => {
+    if (cpsLocatorInCointentMatches) {
+
+      resolve({
+        type: CPS_ID,
+        value: cpsLocatorInCointentMatches[1],
+      });
+    }
     if (shortIdPathMatches) {
       const isTopicId = shortIdPathMatches[1] === 'c' && shortIdPathMatches[2] === 't';
       const isOptimoId = shortIdPathMatches[1] === 'c' && shortIdPathMatches[2] === 'o';

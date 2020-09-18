@@ -35,6 +35,14 @@ describe('should identify type from input', () => {
       bbcpage: undefined,
     },
     {
+      pathname: 'foo/bar',
+      html: '<head>path":"/news/world-europe-48482872"},"stores":{"analytics":{"page":{"contentId":"urn:bbc:cps:2c327dad-87a1-c848-8c77-39e62aeeba87","name":"news.world.europe.story.48482872.page","destination":"NEWS_PS","producer":"NEWS","section":"world::europe","contentType":"article-stories","language":"en","additionalProperties":{"app_name":"',
+      value: '2c327dad-87a1-c848-8c77-39e62aeeba87',
+      type: 'CPS_ID',
+      description: 'match CPS_ID in html',
+      bbcpage: undefined,
+    },
+    {
       pathname: '/jobs/e39b9f70-b783-11ea-8ff8-b5adc858304e',
       html: '<html>"clip_pid": "p01lllhj"</html>',
       value: 'p01lllhj',
