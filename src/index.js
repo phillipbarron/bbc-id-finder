@@ -17,14 +17,13 @@ exports.getId = async (path, html, bbcpage) => {
     html,
   );
   const cpsLocatorInCointentMatches = html && html.match(cpsLocatorRegex);
-  
+
   const iSiteGuidPathMatches = path.match(
     new RegExp(`isite2-xforms/fr/([^/]+)/.*(${guidRegex})`),
   );
 
   return new Promise(async (resolve, reject) => {
     if (cpsLocatorInCointentMatches) {
-
       resolve({
         type: CPS_ID,
         value: cpsLocatorInCointentMatches[1],
